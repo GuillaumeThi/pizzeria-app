@@ -10,7 +10,7 @@ public class Menu
 	public static final int MODIF = 2;
 	public static final int SUPPR = 3;
 	
-	public OptionMenu[] optionMenus;
+	private OptionMenu[] optionMenus;
 	private OptionUser optionUser;
 	
 	

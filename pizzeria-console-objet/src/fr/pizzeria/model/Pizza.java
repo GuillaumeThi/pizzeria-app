@@ -1,6 +1,8 @@
 package fr.pizzeria.model;
 
-public class Pizza {
+import java.io.Serializable;
+
+public class Pizza implements Serializable {
 
 	public int id;
 	public String code;
@@ -24,7 +26,7 @@ public class Pizza {
 	
 	public String toString()
 	{
-		String pizzaToString = this.code + "(" + this.id + ") -> " + this.nom + " (" + this.prix + "€)";
+		String pizzaToString = this.code + "(" + this.id + ") -> " + this.nom + " (" + this.prix + "â‚¬)";
 		return pizzaToString;
 	}
 	

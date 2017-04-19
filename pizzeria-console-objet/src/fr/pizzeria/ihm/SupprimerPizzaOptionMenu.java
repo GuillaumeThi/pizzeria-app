@@ -20,7 +20,7 @@ public class SupprimerPizzaOptionMenu extends OptionMenu
 		boolean ok = false;
 		
 		lister.execute();
-		System.out.println("Veuillez choisir la pizza à supprimer");
+		System.out.println("Veuillez choisir la pizza Ã  supprimer");
 		System.out.println("(99 pour abandonner)");
 		
 		String code = this.optionUser.choixPizza();

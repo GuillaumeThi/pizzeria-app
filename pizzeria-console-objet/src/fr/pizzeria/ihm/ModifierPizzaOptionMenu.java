@@ -12,7 +12,7 @@ public class ModifierPizzaOptionMenu extends OptionMenu
 	{
 		super(dao);
 		this.lister = new ListerPizzasOptionMenu(dao);
-		this.libelle = "3. Mettre à jour une pizza";
+		this.libelle = "3. Mettre Ã  jour une pizza";
 		this.optionUser = o;
 	}
 	
@@ -21,7 +21,7 @@ public class ModifierPizzaOptionMenu extends OptionMenu
 		boolean ok = false;
 		
 		lister.execute();
-		System.out.println("Veuillez choisir la pizza à modifier");
+		System.out.println("Veuillez choisir la pizza Ã  modifier");
 		System.out.println("(99 pour abandonner)");
 		
 		String oldCode = this.optionUser.choixPizza();
