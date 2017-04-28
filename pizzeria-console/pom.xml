@@ -1,0 +1,173 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>dta</groupId>
+		<artifactId>pizzeria-app</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<artifactId>pizzeria-console</artifactId>
+	
+	<profiles>
+	
+		<profile>
+            <id>dev</id>
+            <activation>
+                 <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <dao>fr.pizzeria.dao.DaoMemoireFactory</dao>
+            </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>dta</groupId>
+                    <artifactId>pizzeria-dao-memoire</artifactId>
+                    <scope>runtime</scope>
+                </dependency>
+            </dependencies>
+		</profile>
+		
+		<profile>
+            <id>prod_fichier</id>
+            <activation>
+                 <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <dao>fr.pizzeria.dao.DaoFichierFactory</dao>
+            </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>dta</groupId>
+                    <artifactId>pizzeria-dao-fichier</artifactId>
+                    <scope>runtime</scope>
+                </dependency>
+            </dependencies>
+		</profile>
+		
+		<profile>
+            <id>prod_jdbc</id>
+            <activation>
+                 <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <dao>fr.pizzeria.dao.DaoJdbcFactory</dao>
+            </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>dta</groupId>
+                    <artifactId>pizzeria-dao-jdbc</artifactId>
+                    <scope>runtime</scope>
+                </dependency>
+            </dependencies>
+		</profile>
+		
+		<profile>
+            <id>prod_jpa</id>
+            <activation>
+                 <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <dao>fr.pizzeria.dao.DaoJpaFactory</dao>
+            </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>dta</groupId>
+                    <artifactId>pizzeria-dao-jpa</artifactId>
+                    <scope>runtime</scope>
+                </dependency>
+            </dependencies>
+		</profile>
+	
+	</profiles>
+        
+       
+
+	<build>
+	
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+
+		<pluginManagement>
+			<plugins>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>3.0.2</version>
+					<configuration>
+						<archive>
+							<manifest>
+								<mainClass>fr.pizzeria.ihm.Gestionnaire</mainClass>
+							</manifest>
+						</archive>
+					</configuration>
+				</plugin>
+
+			</plugins>
+		</pluginManagement>
+
+
+		<plugins>
+			<plugin>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>3.0.0</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+
+	</build>
+
+	<dependencies>
+	
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.lalyos</groupId>
+			<artifactId>jfiglet</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>dta</groupId>
+			<artifactId>pizzeria-dao-api</artifactId>
+		</dependency>
+		
+		
+
+		<dependency>
+			<groupId>dta</groupId>
+			<artifactId>pizzeria-dao-fichier</artifactId>
+		</dependency>
+
+		<!-- <dependency>
+			<groupId>dta</groupId>
+			<artifactId>pizzeria-dao-memoire</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>dta</groupId>
+			<artifactId>pizzeria-dao-jdbc</artifactId>
+		</dependency> -->
+
+		<dependency>
+			<groupId>dta</groupId>
+			<artifactId>pizzeria-domain</artifactId>
+		</dependency>
+
+
+	</dependencies>
+
+</project>
